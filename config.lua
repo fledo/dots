@@ -1,10 +1,10 @@
 #!/usr/bin/luajit
 local config = {
-    _VERSION        = 'config 0.1',
-    _DESCRIPTION    = '',
-    _USAGE          = '',
-    _URL            = 'github.com/fledo',
-    _LICENSE        = [[
+    version 		= 'config 0.1',
+    description		= '',
+    usage          	= '',
+    url            	= 'github.com/fledo',
+    license        	= [[
         Copyright (C) 2016  Fred Uggla
 
         This program is free software; you can redistribute it and/or modify
@@ -23,16 +23,48 @@ local config = {
 
     ]]
 }
+local index = require('index')
 
+function config.deploy(file)
+	if file == 'all' then
+		for k,v in pairs(index) do
+                	config.deploy(k)
+        	end	
+	elseif index[file] then
+		for k,v in pairs(index[file]) do
+                	copy(v[2], v[1])
+        	end	
+	else
+		print(file .. ' config not found in index.')
+	end
+end
+
+function config.import(file)
+        if file == 'all' then
+                for k,v in pairs(index) do
+                        config.import(k)
+                end     
+        elseif index[file] then
+                for k,v in pairs(index[file]) do
+                        copy(v[1], v[2])
+                end     
+        else
+                print(file .. ' config not found in index.')
+        end
+end
+
+function copy(from, to)
+	os.execute('cp -vf $HOME' .. from .. ' $HOME' .. to)
+end
 
 -- ## argument handler
 -- call arg[1] if it's a function
 -- echo arg[1] if it's a string
-if type(config[arg[1]]) == 'function' and arg[2] == nil then
-    config[arg[1]]()
+if type(config[arg[1]]) == 'function' and arg[2] ~= nil then
+    config[arg[1]](arg[2])
 elseif type(config[arg[1]]) == 'string' then
-    print(configk[arg[1]])
+    print(config[arg[1]])
 else
-    print(config._USAGE)
+    print(config.usage)
 end
 
