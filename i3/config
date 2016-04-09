@@ -13,18 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+font pango:DejaVu Sans Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -129,7 +118,7 @@ mode "resize" {
 
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
+        # Pressing up will shrink the window’s height
         # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
@@ -153,10 +142,35 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-        tray_output primary
 }
 
+# toggle borders
+bindsym $mod+b border toggle
+
+# Open without without borders
+for_window [class="vlc"] border none
+for_window [class="Firefox"] border none
+for_window [class="Thunar"] border none
+
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume 1 +5%
-bindsym XF86AudioLowerVolume    exec pactl set-sink-volume 1 -5%
+bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume 1 +2%
+bindsym XF86AudioLowerVolume    exec pactl set-sink-volume 1 -2%
 bindsym XF86AudioMute           exec pactl set-sink-mute 1 toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp         exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown       exec xbacklight -dec 10
+bindsym $mod+XF86MonBrightnessUp    exec xbacklight -set 100
+bindsym $mod+XF86MonBrightnessDown  exec xbacklight -set 1
+
+# Move workspace
+bindsym $mod+mod1+Right move workspace to output right
+bindsym $mod+mod1+Left move workspace to output left
+bindsym $mod+mod1+Up move workspace to output up
+bindsym $mod+mod1+Down  move workspace to output down
+
+# blank screen
+bindsym XF86Display exec sleep 0.3 && xset dpms force off
+
+#  blank and lock screen (screenshot -> blur -> bw -> apply logo -> lock screen with image -> blank screen -> remove image)
+bindsym $mod+Escape exec scrot ~/lockbg.png -e 'convert $f -blur 0x3 +repage -colorspace Gray $f' && convert -gravity center -composite ~/lockbg.png ~/Images/debian.png ~/lockbg.png && i3lock -d -u -e -f -i ~/lockbg.png && rm ~/lockbg.png
