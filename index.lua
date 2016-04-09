@@ -7,6 +7,9 @@ local index = {
     },
     tmux = {
         {"/.config/tmux/config", "/dots/tmux/config"}
+    },
+    x = {
+        {"/.Xresources", "/dots/x/resources"}
     }
 }   
 
