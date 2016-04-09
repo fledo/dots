@@ -1,6 +1,4 @@
-" Version:
-" 3
-" 2016-03-31
+" vimrc
 
 " Change <leader> key to "-"
 let mapleader="-"
