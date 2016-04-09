@@ -1,0 +1,41 @@
+" Version:
+" 3
+" 2016-03-31
+
+" Change <leader> key to "-"
+let mapleader="-"
+
+" Wrap long lines, wrap words
+set wrap
+set linebreak
+
+" Show current position
+set ruler
+
+" Syntax highlighting
+syntax enable
+
+" Configure backspace so it acts like excpected
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" Ignore case when searching
+set ignorecase
+
+" Standard encoding utf8
+set encoding=utf8
+
+" tab width
+set tabstop=4
+
+" Indent width
+set shiftwidth=4    
+
+" Columns for a tab
+set softtabstop=4   
+
+" Expands tabs to psaces
+set expandtab       
+
+" Compile and run C code (filename.c -> filename.out)
+autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r.out && clear &&  ./%:r.out<CR>
