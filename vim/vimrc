@@ -1,10 +1,8 @@
-" Version:
-" 3
-" 2016-03-31
+" vimrc
 
 " Change <leader> key to "-"
 let mapleader="-"
-
+	
 " Wrap long lines, wrap words
 set wrap
 set linebreak
@@ -25,17 +23,24 @@ set ignorecase
 " Standard encoding utf8
 set encoding=utf8
 
-" tab width
+" tabs are tabs
 set tabstop=4
+set softtabstop=0 noexpandtab
+set shiftwidth=4	
 
-" Indent width
-set shiftwidth=4    
+" Compile and run C code (filename.c -> filename.out) Always includes ncurses!
+autocmd filetype c nnoremap <Leader>c :w <CR>:!clear && gcc % -o %:r.out -lncurses && clear &&	./%:r.out<CR>
 
-" Columns for a tab
-set softtabstop=4   
+" Show absolute number current line, reletive number other lines
+set number
+set relativenumber
 
-" Expands tabs to psaces
-set expandtab       
-
-" Compile and run C code (filename.c -> filename.out)
-autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r.out && clear &&  ./%:r.out<CR>
+" Disable arrows keys (normal+insert), because all the cool kids do it.
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
