@@ -35,5 +35,19 @@ set softtabstop=4
 " Expands tabs to psaces
 set expandtab       
 
-" Compile and run C code (filename.c -> filename.out)
-autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r.out && clear &&  ./%:r.out<CR>
+" Compile and run C code (filename.c -> filename.out) Always includes ncurses!
+autocmd filetype c nnoremap <Leader>c :w <CR>:!clear && gcc % -o %:r.out -lncurses && clear &&  ./%:r.out<CR>
+
+" Show absolute number current line, reletive number other lines
+set number
+set relativenumber
+
+" Disable arrows keys, because all the cool kids do it.
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
