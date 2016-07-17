@@ -1,9 +1,9 @@
 #!/usr/bin/luajit
-local config = {
-    version 		= 'config 0.1',
-    description		= '',
-    usage          	= '',
-    url            	= 'github.com/fledo',
+local dot = {
+    version 		= 'dot 0.2',
+    description		= 'Handles configuration files',
+    usage          	= 'dot <action> <target>\n\taction:\t "import" from system or "deploy" to system.\n\ttarget:\t Name of specific configuration or "all."',
+    url            	= 'github.com/fledo/dots',
     license        	= [[
         Copyright (C) 2016  Fred Uggla
 
@@ -25,46 +25,49 @@ local config = {
 }
 local index = require('index')
 
-function config.deploy(file)
+function dot.deploy(file)
 	if file == 'all' then
 		for k,v in pairs(index) do
-                	config.deploy(k)
-        	end	
+            dot.deploy(k)
+        end	
 	elseif index[file] then
 		for k,v in pairs(index[file]) do
-                	copy(v[2], v[1])
-        	end	
+            copy(v[2], v[1])
+        end	
 	else
-		print(file .. ' config not found in index.')
+		print(file .. ' dot not found in index.')
 	end
 end
 
-function config.import(file)
-        if file == 'all' then
-                for k,v in pairs(index) do
-                        config.import(k)
-                end     
-        elseif index[file] then
-                for k,v in pairs(index[file]) do
-                        copy(v[1], v[2])
-                end     
-        else
-                print(file .. ' config not found in index.')
-        end
+function dot.import(file)
+    if file == 'all' then
+        for k,v in pairs(index) do
+            dot.import(k)
+        end     
+    elseif index[file] then
+        for k,v in pairs(index[file]) do
+            copy(v[1], v[2])
+        end     
+    else
+        print(file .. ' dot not found in index.')
+    end
 end
 
-function copy(from, to)
-	os.execute('cp -vf $HOME' .. from .. ' $HOME' .. to)
+function copy(from, to, force)
+    if force == 'yes' then
+	    os.execute('cp -fv $HOME' .. from .. ' $HOME' .. to)
+    else
+	    os.execute('cp -fiv $HOME' .. from .. ' $HOME' .. to)
+    end 
 end
 
 -- ## argument handler
 -- call arg[1] if it's a function
 -- echo arg[1] if it's a string
-if type(config[arg[1]]) == 'function' and arg[2] ~= nil then
-    config[arg[1]](arg[2])
-elseif type(config[arg[1]]) == 'string' then
-    print(config[arg[1]])
+if type(dot[arg[1]]) == 'function' and arg[2] ~= nil then
+    dot[arg[1]](arg[2])
+elseif type(dot[arg[1]]) == 'string' then
+    print(dot[arg[1]])
 else
-    print(config.usage)
+    print(dot.version .. ", " .. dot.description .. "\n" .. dot.usage .. "\n" .. dot.url)
 end
-
