@@ -1,0 +1,78 @@
+#!/bin/bash
+### Bash aliases
+
+# Directory where scripts are stored
+scriptDir="$HOME/scripts"
+
+# livestreamer/twitch
+alias twitch="tw fg"
+alias twitchd="tw bg" 
+
+# Start twtich stream with livestreamer
+# $1 username
+tw() {
+    if [ $1 == "fg" ]; then
+        livestreamer twitch.tv/$2 source --retry-streams 30
+    elif [ $1 == "bg" ]; then
+        nohup livestreamer twitch.tv/$2 source --retry-streams 30 &
+    else
+        echo "Parameter 1: '$1' is invalid. Specify mode 'fg' or 'bg'."
+    fi
+}
+
+# Edit code template in vim
+alias nl="new lua script"
+alias ns="new sh script"
+alias nc="new c source"
+
+# Create new source code based on template
+# $1 = template named (stored in $bin/template) 
+# $2 = type ("script" = chmod +x)
+# $3 = filename
+# Example new bash script delete-internet
+new() {
+    if [ $1 ] && [ ! -f "$3.$1" ]; then 
+        cat $scriptDir/template/$1 | sed s/SCRIPTNAME/$3/g | sed s/YEAR/$(date +%Y/g) >> $3.$1 
+        if [ $2 == "script" ]; then
+            chmod +x "$3.$1"
+        fi
+        vim "$3.$1"
+    else
+        echo "Specify unique filename."
+    fi
+}
+
+# edit and source bash_aliases
+alias ea="vim $scriptDir/aliases"
+alias sa="source $scriptDir/aliases && echo 'sourced $scriptDir/aliases'"
+
+# monitor quickness
+# example: vga left, hdmi above
+alias vga="monitor VGA1"
+alias hdmi="monitor HDMI1"
+
+# git
+alias gs="git status"
+alias gm="git commit -m "
+alias gl="git log"
+
+# List all files
+alias ls="ls --color=auto"
+alias la="ls -lah"
+
+# Highlight files
+alias hl="highlight -O ansi"
+
+# Greps
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias pgrep=pgrep
+
+pgrep() {
+    ps -ax | grep -v 'grep' | grep $1
+}
+
+# redshift + syncthing
+alias ns="nohup syncthing --no-browser &"
+alias nr="nohup redshift &"
