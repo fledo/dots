@@ -10,6 +10,9 @@ local index = {
     },
     x = {
         {"/.Xresources", "/dots/x/resources"}
+    },
+    redshift = {
+        {"/.config/redshift.conf", "/dots/redshift/config"}
     }
 }   
 
