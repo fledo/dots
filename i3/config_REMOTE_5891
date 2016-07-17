@@ -151,7 +151,6 @@ bindsym $mod+b border toggle
 for_window [class="vlc"] border none
 for_window [class="Firefox"] border none
 for_window [class="Thunar"] border none
-for_window [class="Clementine"] border none
 for_window [class="google-chrome"] border none
 for_window [class="FTL"] border none
 
@@ -177,6 +176,3 @@ bindsym XF86Display exec sleep 0.3 && xset dpms force off
 
 #  blank and lock screen (screenshot -> blur -> bw -> apply logo -> lock screen with image -> blank screen -> remove image)
 bindsym $mod+Escape exec scrot ~/lockbg.png -e 'convert $f -blur 0x3 +repage -colorspace Gray $f' && convert -gravity center -composite ~/lockbg.png ~/Images/debian.png ~/lockbg.png && i3lock -d -u -e -f -i ~/lockbg.png && rm ~/lockbg.png
-
-# sleep
-bindsym XF86Sleep exec systemctl suspend
