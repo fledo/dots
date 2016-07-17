@@ -6,18 +6,18 @@ scriptDir="$HOME/scripts"
 
 # livestreamer/twitch
 alias twitch="tw fg"
-alias twitchd="tw bg" 
+alias twitchd="tw bg"
 
 # Start twtich stream with livestreamer
 # $1 username
 tw() {
-    if [ $1 == "fg" ]; then
-        livestreamer twitch.tv/$2 source --retry-streams 30
-    elif [ $1 == "bg" ]; then
-        nohup livestreamer twitch.tv/$2 source --retry-streams 30 &
-    else
-        echo "Parameter 1: '$1' is invalid. Specify mode 'fg' or 'bg'."
-    fi
+	if [ $1 == "fg" ]; then
+		livestreamer twitch.tv/$2 source --retry-streams 30
+	elif [ $1 == "bg" ]; then
+		nohup livestreamer twitch.tv/$2 source --retry-streams 30 &
+	else
+		echo "Parameter 1: '$1' is invalid. Specify mode 'fg' or 'bg'."
+	fi
 }
 
 # Edit code template in vim
@@ -26,20 +26,20 @@ alias ns="new sh script"
 alias nc="new c source"
 
 # Create new source code based on template
-# $1 = template named (stored in $bin/template) 
+# $1 = template named (stored in $bin/template)
 # $2 = type ("script" = chmod +x)
 # $3 = filename
 # Example new bash script delete-internet
 new() {
-    if [ $1 ] && [ ! -f "$3.$1" ]; then 
-        cat $scriptDir/template/$1 | sed s/SCRIPTNAME/$3/g | sed s/YEAR/$(date +%Y/g) >> $3.$1 
-        if [ $2 == "script" ]; then
-            chmod +x "$3.$1"
-        fi
-        vim "$3.$1"
-    else
-        echo "Specify unique filename."
-    fi
+	if [ $1 ] && [ ! -f "$3.$1" ]; then
+		cat $scriptDir/template/$1 | sed s/SCRIPTNAME/$3/g | sed s/YEAR/$(date +%Y/g) >> $3.$1
+		if [ $2 == "script" ]; then
+			chmod +x "$3.$1"
+		fi
+		vim "$3.$1"
+	else
+		echo "Specify unique filename."
+	fi
 }
 
 # edit and source bash_aliases
@@ -70,7 +70,7 @@ alias fgrep="fgrep --color=auto"
 alias pgrep=pgrep
 
 pgrep() {
-    ps -ax | grep -v 'grep' | grep $1
+	ps -ax | grep -v 'grep' | grep $1
 }
 
 # redshift + syncthing

@@ -4,7 +4,7 @@
 [redshift]
 ; Temperature day/night (6500K is neutral)
 ; Default 5500/3700
-temp-day=6500		
+temp-day=6500
 temp-night=3000	
 
 brightness-night=0.9
