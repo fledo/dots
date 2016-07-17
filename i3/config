@@ -151,6 +151,7 @@ bindsym $mod+b border toggle
 for_window [class="vlc"] border none
 for_window [class="Firefox"] border none
 for_window [class="Thunar"] border none
+for_window [class="Clementine"] border none
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume 1 +2%
