@@ -51,3 +51,6 @@ set backupdir=~/documents/vim/backup
 
 " Swap files
 set dir=~/documents/vim/swap
+
+" Markdownhightlight for .md
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
