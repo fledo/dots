@@ -54,3 +54,7 @@ set dir=~/documents/vim/swap
 
 " Markdownhightlight for .md
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+" Markdown headers
+nmap <leader>h1 VypVr=
+nmap <leader>h2 VypVr-
