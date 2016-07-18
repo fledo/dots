@@ -44,3 +44,10 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+" Backups
+set backup
+set backupdir=~/documents/vim/backup
+
+" Swap files
+set dir=~/documents/vim/swap
