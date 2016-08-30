@@ -65,8 +65,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -184,3 +184,7 @@ bindsym $mod+Escape exec scrot ~/lockbg.png -e 'convert $f -blur 0x3 +repage -co
 
 # Sleep
 bindsym XF86Sleep exec systemctl suspend
+
+# Open
+bindsym $mod+s exec pavucontrol
+bindsym $mod+t exec thunar
