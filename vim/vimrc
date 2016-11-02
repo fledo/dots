@@ -67,3 +67,14 @@ colorscheme desert
 
 " Hide (don't close) buffers. No need to save on buffer switch
 set hidden
+
+" Strip trailing white space
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+" Remove trailing white space on save
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
