@@ -78,3 +78,6 @@ endfun
 
 " Remove trailing white space on save
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" Skip :checktime prompt
+:set autoread
