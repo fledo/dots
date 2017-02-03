@@ -4,6 +4,9 @@ local index = {
 		{"/.bash_profile", "/dots/bash/profile"},
 		{"/.bash_aliases", "/dots/bash/aliases"},
 	},
+	zsh = {
+		{"/.zshrc", "/dots/zsh/rc"}
+	},
 	i3 = {
 		{"/.config/i3/config", "/dots/i3/config"}
 	},
@@ -19,6 +22,5 @@ local index = {
 	redshift = {
 		{"/.config/redshift.conf", "/dots/redshift/config"}
 	}
-}	
-
-return index 
+}
+return index
