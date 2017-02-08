@@ -180,7 +180,7 @@ bindsym $mod+mod1+j	move workspace to output down
 bindsym XF86Display exec sleep 0.3 && xset dpms force off
 
 # Blank and lock screen (screenshot -> blur -> bw -> apply logo -> lock screen with image -> blank screen -> remove image)
-bindsym $mod+Escape exec scrot ~/lockbg.png -e 'convert $f -blur 0x3 +repage -colorspace Gray $f' && convert -gravity center -composite ~/lockbg.png ~/Images/debian.png ~/lockbg.png && i3lock -d -u -e -i ~/lockbg.png && rm ~/lockbg.png
+bindsym $mod+Escape exec scrot ~/.lockbg.png && convert ~/.lockbg.png -blur 0x3 +repage -colorspace Gray ~/.lockbg.png && convert -gravity center -composite ~/.lockbg.png ~/Images/debian.png ~/.lockbg.png && i3lock -d -u -e -i ~/.lockbg.png && rm ~/.lockbg.png
 
 # Sleep
 bindsym XF86Sleep exec systemctl suspend
