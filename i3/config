@@ -188,3 +188,6 @@ bindsym XF86Sleep exec systemctl suspend
 # Open
 bindsym $mod+s exec pavucontrol
 bindsym $mod+t exec thunar
+
+# Workspace
+assign [class="discord"] discord
