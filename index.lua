@@ -2,7 +2,7 @@ local index = {
 	shell = {
 		{"/.bashrc", "/dots/shell/bashrc"},
 		{"/.bash_profile", "/dots/shell/bash_profile"},
-		{"/.bash_aliases", "/dots/shell/aliases"},
+		{"/.aliases", "/dots/shell/aliases"},
 		{"/.zshrc", "/dots/shell/zshrc"}
 	},
 	i3 = {

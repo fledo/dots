@@ -1,5 +1,4 @@
-#!/bin/bash
-### Bash aliases
+### Shell aliases
 
 # Directory where scripts are stored
 scriptDir="$HOME/scripts"
@@ -21,18 +20,18 @@ tw() {
 }
 
 # Edit code template in vim
-alias nl="new lua script"
-alias ns="new sh script"
-alias nc="new c source"
+alias newlua="template lua script"
+alias newbash="template bash script"
+alias newc="template c source"
 
 # Create new source code based on template
-# $1 = template named (stored in $bin/template)
+# $1 = template name (stored in ~/template)
 # $2 = type ("script" = chmod +x)
 # $3 = filename
 # Example new bash script delete-internet
-new() {
+template() {
 	if [ $1 ] && [ ! -f "$3.$1" ]; then
-		cat $scriptDir/template/$1 | sed s/SCRIPTNAME/$3/g | sed s/YEAR/$(date +%Y/g) >> $3.$1
+		cat ~/template/$1.$1 | sed s/SCRIPTNAME/$3/g | sed s/YEAR/$(date +%Y/g) >> $3.$1
 		if [ $2 == "script" ]; then
 			chmod +x "$3.$1"
 		fi
@@ -43,8 +42,8 @@ new() {
 }
 
 # edit and source bash_aliases
-alias ea="vim $scriptDir/aliases"
-alias sa="source $scriptDir/aliases && echo 'sourced $scriptDir/aliases'"
+alias ea="vim ~/.aliases"
+alias sa="source ~/.aliases && echo 'sourced ~/.aliases'"
 
 # monitor quickness
 # example: vga left, hdmi above
@@ -67,11 +66,7 @@ alias hl="highlight -O ansi"
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
-alias pgrep=pgrep
-
-pgrep() {
-	ps -ax | grep -v 'grep' | grep $1
-}
+alias pgrep="pgrep --list-full"
 
 # redshift + syncthing
 alias ns="nohup syncthing --no-browser &"

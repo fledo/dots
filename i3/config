@@ -190,4 +190,4 @@ bindsym $mod+s exec pavucontrol
 bindsym $mod+t exec thunar
 
 # Workspace
-assign [class="discord"] discord
+assign [class="discord"] 3
