@@ -71,3 +71,11 @@ alias pgrep="pgrep --list-full"
 # redshift + syncthing
 alias ns="nohup syncthing --no-browser &"
 alias nr="nohup redshift &"
+
+# Mount cifs/samba, map to current user
+mountcifs () {
+	target="$1"
+	mountpoint="$2"
+	username=${3:-$(whoami)}
+	sudo mount -t cifs "$target" "$mountpoint" -o username="$username" -o uid=$(id -u) -o gid=$(id -g)
+}
