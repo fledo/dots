@@ -1,8 +1,26 @@
 " vimrc
 
+" Vundle start
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" Vundle done
+
 " Change <leader> key to "-"
 let mapleader="-"
-	
+
 " Wrap long lines, wrap words
 set wrap
 set linebreak
@@ -26,7 +44,7 @@ set encoding=utf8
 " tabs are tabs
 set tabstop=4
 set softtabstop=0 noexpandtab
-set shiftwidth=4	
+set shiftwidth=4
 
 " Compile and run C code (filename.c -> filename.out) Always includes ncurses!
 autocmd filetype c nnoremap <Leader>c :w <CR>:!clear && gcc % -o %:r.out -lncurses && clear &&	./%:r.out<CR>
