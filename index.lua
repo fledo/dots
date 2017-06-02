@@ -1,17 +1,15 @@
 local index = {
-	bash = {
-		{"/.bashrc", "/dots/bash/rc"},
-		{"/.bash_profile", "/dots/bash/profile"},
-		{"/.bash_aliases", "/dots/bash/aliases"},
-	},
-	zsh = {
-		{"/.zshrc", "/dots/zsh/rc"}
+	shell = {
+		{"/.bashrc", "/dots/shell/bashrc"},
+		{"/.bash_profile", "/dots/shell/bash_profile"},
+		{"/.aliases", "/dots/shell/aliases"},
+		{"/.zshrc", "/dots/shell/zshrc"}
 	},
 	i3 = {
 		{"/.config/i3/config", "/dots/i3/config"}
 	},
 	vim = {
-		{"/.vimrc", "/dots/vim/vimrc"}
+		{"/.config/vim/vimrc", "/dots/vim/vimrc"}
 	},
 	tmux = {
 		{"/.config/tmux/config", "/dots/tmux/config"}

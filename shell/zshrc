@@ -2,6 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=100000
+
 setopt autocd
 unsetopt beep
 bindkey -v
@@ -12,3 +13,12 @@ zstyle :compinstall filename '/home/fred/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# Enviroment
+export MYVIMRC='~/.config/vim/vimrc'
+export VIMINIT='source $MYVIMRC'
+
+# Alias definitions.
+if [ -f ~/.aliases ]; then
+	. ~/.aliases
+fi
