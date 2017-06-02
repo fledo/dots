@@ -154,6 +154,7 @@ for_window [class="Thunar"] border none
 for_window [class="Clementine"] border none
 for_window [class="google-chrome"] border none
 for_window [class="FTL"] border none
+for_window [class="mpv"] border none
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume	exec pactl set-sink-volume 1 +2%
