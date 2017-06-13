@@ -91,10 +91,12 @@ i3-rename() {
 }
 
 # Taskwarrior
+alias t="task"
 alias tl="task list"
 alias ta="task add"
 alias tm="task modify"
 alias ts="task start"
+alias td="task done"
 
 # Firefox
 alias firefoxp="nohup firefox -p --no-remote &"
