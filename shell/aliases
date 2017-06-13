@@ -79,3 +79,13 @@ mountcifs () {
 	username=${3:-$(whoami)}
 	sudo mount -t cifs "$target" "$mountpoint" -o username="$username" -o uid=$(id -u) -o gid=$(id -g)
 }
+
+# Rename current i3 workspace
+# $1 = new workspace name
+i3-rename() {
+	if [[ -v 1 ]]; then
+		i3-msg rename workspace $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2) to $1
+	else
+		echo "i3-rename <new name>"
+	fi
+}
