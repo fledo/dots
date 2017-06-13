@@ -94,6 +94,7 @@ i3-rename() {
 alias tl="task list"
 alias ta="task add"
 alias tm="task modify"
+alias ts="task start"
 
 # Firefox
 alias firefoxp="nohup firefox -p --no-remote &"
