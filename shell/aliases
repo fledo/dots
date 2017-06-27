@@ -111,6 +111,6 @@ workstation-setup() {
 		sudo apt update
 		sudo apt install -y $software_list
 	else
-		echo No
+		echo Software installation aborted
 	fi
 }
