@@ -114,3 +114,9 @@ workstation-setup() {
 		echo Software installation aborted
 	fi
 }
+
+# Fix ssh auth in tmux attach
+fixssh() {
+    eval $(tmux show-env    \
+        |sed -n 's/^\(SSH_[^=]*\)=\(.*\)/export \1="\2"/p')
+}
