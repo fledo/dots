@@ -8,4 +8,4 @@ set -g base-index 1
 set -g pane-base-index 1
 
 # Mouse scroll window/pane
-set -g mode-mouse on
+set -g mouse on
