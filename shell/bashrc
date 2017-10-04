@@ -112,3 +112,7 @@ fi
 if [ -d $HOME/dots ]; then
 	export PATH="$HOME/dots:$PATH"
 fi
+
+# Default editor vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
