@@ -19,7 +19,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec rxvt-unicode
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -92,6 +92,9 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+
+# Switch to named workspace
+bindsym $mod+g workspace grafana
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -192,3 +195,6 @@ bindsym $mod+t exec thunar
 
 # Workspace
 assign [class="discord"] discord
+
+# Rename current workspace
+bindsym $mod+n exec  i3-input -F "rename workspace $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d\" -f2) to %s" > /home/fred/log

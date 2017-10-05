@@ -79,3 +79,47 @@ mountcifs () {
 	username=${3:-$(whoami)}
 	sudo mount -t cifs "$target" "$mountpoint" -o username="$username" -o uid=$(id -u) -o gid=$(id -g)
 }
+<<<<<<< HEAD
+=======
+
+# Rename current i3 workspace
+# $1 = new workspace name
+i3-rename() {
+	if [[ -v 1 ]]; then
+		i3-msg rename workspace $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2) to $1
+	else
+		echo "i3-rename <new name>"
+	fi
+}
+
+# Taskwarrior
+alias t="task"
+alias tl="task list"
+alias ta="task add"
+alias tm="task modify"
+alias ts="task start"
+alias td="task done"
+
+# Firefox
+alias firefoxp="nohup firefox -p --no-remote &"
+
+# Setup new workstation
+workstation-setup() {
+	software_list="vim i3 git feh firefox thunderbird imagemagick i3-lock curl evince geany redshift htop gimp keepassx lightdm lua5.3 mpv ntfs-3g p7zip-full pandoc pavucontrol remmina rsync rxvt-unicode-256color youtube-dl texlive-latex-recommended texlive-latex-extra thunar tmux tshark vlc zip network-manager-gnome network-manager-openvpn-gnome zsh nmap"
+	echo -n "$(sed 's/ /\\n/g' <<< $software_list) Are you sure you want to install all the software above [y/n]? "
+	read answer
+	if echo "$answer" | grep -iq "^y" ;then
+		sudo vim /etc/apt/sources.list
+		sudo apt update
+		sudo apt install -y $software_list
+	else
+		echo Software installation aborted
+	fi
+}
+
+# Fix ssh auth in tmux attach
+fixssh() {
+    eval $(tmux show-env    \
+        |sed -n 's/^\(SSH_[^=]*\)=\(.*\)/export \1="\2"/p')
+}
+>>>>>>> 02c558802055b97c68bc3ffcda7d16a8bcb9c035
